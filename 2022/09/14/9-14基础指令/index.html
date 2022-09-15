@@ -97,16 +97,49 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="generator" content="Hexo 5.4.1"></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="/img/assets/sun.jpg"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">zty</div><div class="profile-signature">My WeChat：X12S05S</div><div class="friends"><div>FRIENDS</div><span><a href="//www.8bytes.top/" target="_black">hsy</a></span><span><a href="//www.ppppz.net/" target="_black">pz</a></span><span><a href="//www.ddddy.icu/" target="_black">dy</a></span><span><a href="//www.jjjjy.icu/" target="_black">wjy</a></span><span><a href="//www.coeurxx.space/" target="_black">bhl</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 70vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.Zheng's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">汇编指令</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-calendar"></i><span>2022-09-14</span></span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h4 id="mov-指令"><a href="#mov-指令" class="headerlink" title="mov 指令"></a>mov 指令</h4><ul>
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">zty</div><div class="profile-signature">My WeChat：X12S05S</div><div class="friends"><div>FRIENDS</div><span><a href="//www.8bytes.top/" target="_black">hsy</a></span><span><a href="//www.ppppz.net/" target="_black">pz</a></span><span><a href="//www.ddddy.icu/" target="_black">dy</a></span><span><a href="//www.jjjjy.icu/" target="_black">wjy</a></span><span><a href="//www.coeurxx.space/" target="_black">bhl</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 70vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.Zheng's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">汇编指令</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-calendar"></i><span>2022-09-14</span></span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h4 id="mov-指令-传送字或字节"><a href="#mov-指令-传送字或字节" class="headerlink" title="mov 指令 (传送字或字节)"></a>mov 指令 (传送字或字节)</h4><ul>
+<li>用法：<ul>
+<li>mov 寄存器, 数据</li>
+</ul>
+</li>
 <li>相当于高级语言的赋值<ul>
-<li>如：mov ax，123H 就是给ax寄存器存入123H（ax=123H）</li>
+<li>如：mov ax, 123H 就是给ax寄存器存入123H（ax=123H）</li>
 </ul>
 </li>
 </ul>
-<h4 id="add-指令"><a href="#add-指令" class="headerlink" title="add 指令"></a>add 指令</h4><ul>
+<h4 id="add-指令（加法）"><a href="#add-指令（加法）" class="headerlink" title="add 指令（加法）"></a>add 指令（加法）</h4><ul>
+<li>用法：<ul>
+<li>add 寄存器, 数据</li>
+</ul>
+</li>
 <li>相当于高级语言中的相加<ul>
-<li>如：add ax， 1H 就是给ax的值加上1H（ax=ax+1H）</li>
+<li>如：add ax, 1H 就是给ax的值加上1H（ax=ax+1H）</li>
+<li>add ax, [0] 就是取内存中的值给ax赋值（<font color='red'>[0]相当于<font color='blue'>ds的地址</font>:0000</font>）<font color='green'>其他运算相同</font></li>
 </ul>
 </li>
 </ul>
-<h4 id="jmp指令"><a href="#jmp指令" class="headerlink" title="jmp指令"></a>jmp指令</h4></article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="http://example.com">zty</a></p><p> <span>Link:  </span><a href="http://example.com/2022/09/14/9-14%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4/">http://example.com/2022/09/14/9-14%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="nextSlogan" href="/2022/09/13/9-13debug/" title="debug命令的使用"><span>NextPost ></span><br><span class="nextTitle">debug命令的使用</span></a><div class="clear"></div></div><div id="comment"></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 70vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#mov-%E6%8C%87%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">mov 指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#add-%E6%8C%87%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">add 指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#jmp%E6%8C%87%E4%BB%A4"><span class="toc-number">3.</span> <span class="toc-text">jmp指令</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+<h4 id="sub-指令（减法）"><a href="#sub-指令（减法）" class="headerlink" title="sub 指令（减法）"></a>sub 指令（减法）</h4><ul>
+<li>用法：<ul>
+<li>sub 寄存器, 数据</li>
+</ul>
+</li>
+<li>相当于高级语言中的相减<ul>
+<li>如：sub ax, 1H 就是给ax的值减去1H（ax=ax-1H）</li>
+</ul>
+</li>
+</ul>
+<h4 id="jmp-指令（转移）"><a href="#jmp-指令（转移）" class="headerlink" title="jmp 指令（转移）"></a>jmp 指令（转移）</h4><ul>
+<li>用法：<ul>
+<li>jmp 段地址:偏移地址</li>
+</ul>
+</li>
+<li>用指令中的段地址修改cs，偏移地址修改ip<ul>
+<li>如：jmp 2AE3:3 就是把cs的数据改为2AE3，ip的数据改为0003</li>
+<li>jmp 某一合法寄存器（仅修改ip的内容）<ul>
+<li>如：jmp ax（类似于<font color='red'>mov ip, ax</font>不合法，只是类似）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="http://example.com">zty</a></p><p> <span>Link:  </span><a href="http://example.com/2022/09/14/9-14%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4/">http://example.com/2022/09/14/9-14%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="nextSlogan" href="/2022/09/13/9-13debug/" title="debug命令的使用"><span>NextPost ></span><br><span class="nextTitle">debug命令的使用</span></a><div class="clear"></div></div><div id="comment"></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 70vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#mov-%E6%8C%87%E4%BB%A4-%E4%BC%A0%E9%80%81%E5%AD%97%E6%88%96%E5%AD%97%E8%8A%82"><span class="toc-number">1.</span> <span class="toc-text">mov 指令 (传送字或字节)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#add-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%8A%A0%E6%B3%95%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">add 指令（加法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sub-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%87%8F%E6%B3%95%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">sub 指令（减法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#jmp-%E6%8C%87%E4%BB%A4%EF%BC%88%E8%BD%AC%E7%A7%BB%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">jmp 指令（转移）</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

@@ -97,19 +97,38 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="generator" content="Hexo 5.4.1"></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="/img/assets/sun.jpg"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">zty</div><div class="profile-signature">My WeChat：X12S05S</div><div class="friends"><div>FRIENDS</div><span><a href="//www.8bytes.top/" target="_black">hsy</a></span><span><a href="//www.ppppz.net/" target="_black">pz</a></span><span><a href="//www.ddddy.icu/" target="_black">dy</a></span><span><a href="//www.jjjjy.icu/" target="_black">wjy</a></span><span><a href="//www.coeurxx.space/" target="_black">bhl</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 70vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.Zheng's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.Zheng's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-envelope" href="mailto:1438672340@qq.com" title="email"></a><a class="fa fa-github" href="//github.com/clearzty" target="_blank" title="github"></a><a class="fa fa-weibo" href="//www.weibo.com" target="_blank" title="weibo"></a><a class="fa fa-facebook" href="//www.bilibili.com" target="_blank" title="facebook"></a><a class="fa fa-twitter" href="//twitter.com" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2022/09/14/9-14%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4/">汇编指令</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-09-13T16:00:00.000Z">2022-09-14</time></div><div class="recent-post-content">mov 指令
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">zty</div><div class="profile-signature">My WeChat：X12S05S</div><div class="friends"><div>FRIENDS</div><span><a href="//www.8bytes.top/" target="_black">hsy</a></span><span><a href="//www.ppppz.net/" target="_black">pz</a></span><span><a href="//www.ddddy.icu/" target="_black">dy</a></span><span><a href="//www.jjjjy.icu/" target="_black">wjy</a></span><span><a href="//www.coeurxx.space/" target="_black">bhl</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 70vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.Zheng's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1>Mr.Zheng's Blog</h1><h5>Welcome to my Blog!</h5><div class="intro-social"><a class="fa fa-envelope" href="mailto:1438672340@qq.com" title="email"></a><a class="fa fa-github" href="//github.com/clearzty" target="_blank" title="github"></a><a class="fa fa-weibo" href="//www.weibo.com" target="_blank" title="weibo"></a><a class="fa fa-facebook" href="//www.bilibili.com" target="_blank" title="facebook"></a><a class="fa fa-twitter" href="//twitter.com" target="_blank" title="twitter"></a><a class="fa fa-rss" href="/atom.xml" target="_blank" title="rss"></a></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><section id="recent-posts"><div class="recent-post-item"><div class="post-title"><a href="/2022/09/14/9-14%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4/">汇编指令</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-09-13T16:00:00.000Z">2022-09-14</time></div><div class="recent-post-content">mov 指令 (传送字或字节)
+用法：
+mov 寄存器, 数据
+
+
 相当于高级语言的赋值
-如：mov ax，123H 就是给ax寄存器存入123H（ax=123H）
+如：mov ax, 123H 就是给ax寄存器存入123H（ax=123H）
 
 
 
-add 指令
+add 指令（加法）
+用法：
+add 寄存器, 数据
+
+
 相当于高级语言中的相加
-如：add ax， 1H 就是给ax的值加上1H（ax=ax+1H）
+如：add ax, 1H 就是给ax的值加上1H（ax=ax+1H）
+add ax, [0] 就是取内存中的值给ax赋值（[0]相当于ds的地址:0000）其他运算相同
 
 
 
-jmp指令</div><div class="read-more"><a class="more" href="/2022/09/14/9-14%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/09/13/9-13debug/">debug命令的使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-09-12T16:00:00.000Z">2022-09-13</time></div><div class="recent-post-content">DebugR命令：查看、改变CPU寄存器的内容；
+sub 指令（减法）
+用法：
+sub 寄存器, 数据
+
+
+相当于高级语言中的相减
+如：sub ax, 1H 就是给ax的值减去1H（ax=ax-1H）
+
+
+
+jmp 指 ...</div><div class="read-more"><a class="more" href="/2022/09/14/9-14%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/09/13/9-13debug/">debug命令的使用</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-09-12T16:00:00.000Z">2022-09-13</time></div><div class="recent-post-content">DebugR命令：查看、改变CPU寄存器的内容；
 输入r：查看所有寄存器的值
 输入r 寄存器名称：修改寄存器的值D命令：查看内存中的内容；
 输入d：可以查看内存中的内容
@@ -118,9 +137,28 @@ jmp指令</div><div class="read-more"><a class="more" href="/2022/09/14/9-14%E5%
 输入d 偏移地址、 d 起始偏移地址 结尾偏移地址：会将DS的内容作为段地址E命令：改写内存中的内容：
 输入e 段地址:偏移地址 数据串修改特定位置的内存数据
 输入e 段地址:偏移地址后按Enter也可以修改特定位置的内存数据，数据之间用空格隔开U命令：将内存中的机器指令翻译成汇编指令：
-输入u、u  ...</div><div class="read-more"><a class="more" href="/2022/09/13/9-13debug/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/09/05/9-5%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80/">寄存器</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-09-04T16:00:00.000Z">2022-09-05</time></div><div class="recent-post-content">寄存器中cs，ds，ss，es的区别首先 cpu中寄存器用于存储内存中数据的物理地址cs 为代码段寄存器，一般用于存放代码；通常和IP 使用用于处理下一条执行的代码cs:IP基地址：偏移地址cs地址对应的数据 相当于c语言中的代码语句ds 为数据段寄存器，一般用于存放数据；ds地址对应的数据 相当于c语言中的全局变量ss 为栈段寄存器，一般作为栈使用 和sp搭档；ss地址对应的数据 相当于c语言中的局部变量ss相当于堆栈段的首地址  sp相当于堆栈段的偏移地址es 为扩展段寄存器； 
+输入u、u  ...</div><div class="read-more"><a class="more" href="/2022/09/13/9-13debug/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/09/05/9-5%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80/">寄存器</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-09-04T16:00:00.000Z">2022-09-05</time></div><div class="recent-post-content">寄存器中cs，ds，ss，es的区别####首先 cpu中寄存器用于存储内存中数据的物理地址
 
-代码段CS,IP与代码段
-CS:代码段寄存器
-IP:指令指针寄存器
-CS:IP:CPU将内存地址CS:IP指 ...</div><div class="read-more"><a class="more" href="/2022/09/05/9-5%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><span class="page-number current">1</span></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+cs 为代码段寄存器，一般用于存放代码；
+通常和IP一起使用用于处理下一条执行的代码
+
+
+CS:IP
+基地址:偏移地址
+cs地址对应的数据 相当于c语言中的代码语句
+
+
+ds 为数据段寄存器，一般用于存放数据；
+ds地址对应的数据 相当于c语言中的全局变量
+
+
+ss 为栈段寄存器，一般作为栈使用 和sp搭档；
+ss地址对应的数据 相当于c语言中的局部变量
+ss相当于堆栈段的首地址  sp相当于堆栈段的偏移地址
+
+
+es 为扩展段寄存器； 
+
+
+汇编不区分大小写基础指令
+mov ax,10   ax赋 ...</div><div class="read-more"><a class="more" href="/2022/09/05/9-5%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><span class="page-number current">1</span></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
