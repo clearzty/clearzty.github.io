@@ -103,7 +103,7 @@
 </ul>
 </li>
 <li>相当于高级语言的赋值<ul>
-<li>如：mov ax, 123H 就是给ax寄存器存入123H（ax=123H）</li>
+<li>如：mov ax, 123H 就是给ax寄存器存入123H（ax=123H）<img src="/2022/09/14/9-14%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4/1.png" class=""></li>
 </ul>
 </li>
 </ul>
@@ -142,4 +142,36 @@
 </ul>
 </li>
 </ul>
-</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="http://example.com">zty</a></p><p> <span>Link:  </span><a href="http://example.com/2022/09/14/9-14%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4/">http://example.com/2022/09/14/9-14%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="nextSlogan" href="/2022/09/13/9-13debug/" title="debug命令的使用"><span>NextPost ></span><br><span class="nextTitle">debug命令的使用</span></a><div class="clear"></div></div><div id="comment"></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 70vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#mov-%E6%8C%87%E4%BB%A4-%E4%BC%A0%E9%80%81%E5%AD%97%E6%88%96%E5%AD%97%E8%8A%82"><span class="toc-number">1.</span> <span class="toc-text">mov 指令 (传送字或字节)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#add-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%8A%A0%E6%B3%95%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">add 指令（加法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sub-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%87%8F%E6%B3%95%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">sub 指令（减法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#jmp-%E6%8C%87%E4%BB%A4%EF%BC%88%E8%BD%AC%E7%A7%BB%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">jmp 指令（转移）</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+<h4 id="push-指令（入栈）"><a href="#push-指令（入栈）" class="headerlink" title="push 指令（入栈）"></a>push 指令（入栈）</h4><ul>
+<li>用法：<ul>
+<li>push 寄存器</li>
+</ul>
+</li>
+<li>将寄存器中的数据送入栈中<ul>
+<li>如push ax，就是把通用寄存器ax中的数据放入栈顶</li>
+</ul>
+</li>
+<li>执行过程<ol>
+<li>SP=SP-2；</li>
+<li>将ax中的内容送入SS:SP指向的内存单元处，SS:SP此时指向新栈顶</li>
+</ol>
+</li>
+</ul>
+<p><font color='red'>ps:以字为单位对栈进行操作</font></p>
+<h4 id="pop-指令（出栈）"><a href="#pop-指令（出栈）" class="headerlink" title="pop 指令（出栈）"></a>pop 指令（出栈）</h4><ul>
+<li>用法：<ul>
+<li>pop 寄存器</li>
+</ul>
+</li>
+<li>将栈顶的数据取出送入寄存器<ul>
+<li>如pop ax，就是把栈顶的数据存入ax中</li>
+</ul>
+</li>
+<li>执行过程<ol>
+<li>将SS:SP指向的内存单元出的数据送入ax中</li>
+<li>SP=SP+2，SS:SP指向当前栈顶下面的单元，以当前栈顶下面的单元为新的栈顶</li>
+</ol>
+</li>
+</ul>
+<p><font color='red'>ps:以字为单位对栈进行操作</font></p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="http://example.com">zty</a></p><p> <span>Link:  </span><a href="http://example.com/2022/09/14/9-14%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4/">http://example.com/2022/09/14/9-14%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="nextSlogan" href="/2022/09/13/9-13debug/" title="debug命令的使用"><span>NextPost ></span><br><span class="nextTitle">debug命令的使用</span></a><div class="clear"></div></div><div id="comment"></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 70vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#mov-%E6%8C%87%E4%BB%A4-%E4%BC%A0%E9%80%81%E5%AD%97%E6%88%96%E5%AD%97%E8%8A%82"><span class="toc-number">1.</span> <span class="toc-text">mov 指令 (传送字或字节)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#add-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%8A%A0%E6%B3%95%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">add 指令（加法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sub-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%87%8F%E6%B3%95%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">sub 指令（减法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#jmp-%E6%8C%87%E4%BB%A4%EF%BC%88%E8%BD%AC%E7%A7%BB%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">jmp 指令（转移）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#push-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%85%A5%E6%A0%88%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">push 指令（入栈）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pop-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%87%BA%E6%A0%88%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">pop 指令（出栈）</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
