@@ -135,7 +135,7 @@
 </ul>
 <h4 id="div-指令（除法）"><a href="#div-指令（除法）" class="headerlink" title="div 指令（除法）"></a>div 指令（除法）</h4><ul>
 <li>被除数：（默认）放在AX或DX和AX中</li>
-<li>除数：8位或16位，再寄存器或内存单元中</li>
+<li>除数：8位或16位，在寄存器或内存单元中</li>
 <li>用法：<ul>
 <li>div 寄存器</li>
 <li>div 内存单元</li>
@@ -147,6 +147,28 @@
 </ul>
 </li>
 </ul>
+<h4 id="mul-指令（乘法）"><a href="#mul-指令（乘法）" class="headerlink" title="mul 指令（乘法）"></a>mul 指令（乘法）</h4><ul>
+<li><p>对于8位乘法</p>
+<ul>
+<li>被乘数默认放在AL中</li>
+<li>乘数在8位寄存器或内存字节单元</li>
+<li>结果在AX中</li>
+</ul>
+</li>
+<li><p>对于16位乘法</p>
+<ul>
+<li>被乘数默认放在AX中</li>
+<li>乘数在16位寄存器或内存字单元</li>
+<li>结果在DX（高位）和AX（低位）中</li>
+</ul>
+</li>
+<li><p>用法：</p>
+<ul>
+<li>mul 寄存器</li>
+<li>mul 内存单元</li>
+</ul>
+</li>
+</ul>
 <h4 id="jmp-指令（转移）"><a href="#jmp-指令（转移）" class="headerlink" title="jmp 指令（转移）"></a>jmp 指令（转移）</h4><ul>
 <li>用法：<ul>
 <li>jmp 段地址:偏移地址</li>
@@ -155,11 +177,112 @@
 <li>用指令中的段地址修改cs，偏移地址修改ip<ul>
 <li>如：jmp 2AE3:3 就是把cs的数据改为2AE3，ip的数据改为0003</li>
 <li>jmp 某一合法寄存器（仅修改ip的内容）<ul>
-<li>如：jmp ax（类似于<font color='red'>mov ip, ax</font>不合法，只是类似）<img src="/2022/09/14/9-14%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4/5.png" class=""></li>
+<li>如：jmp ax（类似于<font color='red'>mov ip, ax</font>不合法，只是类似）</li>
+<li><img src="/2022/09/14/9-14%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4/5.png" class=""></li>
 </ul>
 </li>
 </ul>
 </li>
+</ul>
+<p>详细见9-25转移</p>
+<h4 id="jcxz-指令"><a href="#jcxz-指令" class="headerlink" title="jcxz 指令"></a>jcxz 指令</h4><ul>
+<li><p>用法：</p>
+<ul>
+<li>jcxz 标号</li>
+</ul>
+</li>
+<li><p>如果(cx)=0，则转移到标号处执行，当(cx)≠0时，什么也不做（程序向下执行）</p>
+</li>
+<li><p>当(cx)=0时，(IP)=(IP)+8位位移</p>
+<ul>
+<li>8位位移=“标号”处的地址-jcxz指令后的第一个字节的地址</li>
+<li>8位位移的范围为-128~127，用补码表示</li>
+<li>8位位移由编译程序在编译时算出</li>
+</ul>
+</li>
+<li><p>jcxz是有条件转移指令</p>
+<ul>
+<li>所有的有条件转移指令都是短转移</li>
+<li>对IP的修改范围都是-128~127</li>
+<li>在对应的机器码中包含转移的位移，而不是目的地址</li>
+</ul>
+</li>
+</ul>
+<h4 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h4><ul>
+<li>实质还是流程转移指令，它们都修改IP，或同时修改CS和IP</li>
+</ul>
+<h5 id="call-指令-（调用子程序）"><a href="#call-指令-（调用子程序）" class="headerlink" title="call 指令 （调用子程序）"></a>call 指令 （调用子程序）</h5><ul>
+<li><p> 用法：</p>
+</li>
+<li><p>call 标号</p>
+<ul>
+<li><p>cpu执行call指令，执行两步操作：</p>
+</li>
+<li><p>将当前的IP或CS和IP压入栈中；</p>
+<ul>
+<li><p>(SP)=(SP)-2</p>
+<p>((SS)*16+16)=IP</p>
+</li>
+</ul>
+</li>
+<li><p>转移到标号处执行指令。</p>
+<ul>
+<li><p>(IP)=(IP)+16位位移</p>
+</li>
+<li><p>16位位移=“标号”处的地址-call指令后的第一个字节的地址；</p>
+</li>
+<li><p>16位位移的范围为-32768~32767，用补码表示；</p>
+</li>
+<li><p>16位位移由编译程序在编译时算出</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>call far ptr 标号</p>
+<ol>
+<li><p>(sp)=(sp)-2</p>
+<p>((ss)*16+(sp))=(cs)</p>
+<p>(sp)=(sp)-2</p>
+<p>((ss)*16+(sp))=(ip)</p>
+</li>
+<li><p>(cs)=标号所在的段地址</p>
+<p>(ip)=标号所在的偏移地址</p>
+</li>
+</ol>
+</li>
+<li><p>call 16位寄存器</p>
+<ol>
+<li><p>(SP)=(SP)-2</p>
+<p>((ss)*16+(sp))=(IP)</p>
+</li>
+<li><p>(IP)=(16位寄存器)</p>
+</li>
+</ol>
+</li>
+<li><p>call word ptr 内存单元地址</p>
+</li>
+<li><p>call dword ptr 内存单元地址</p>
+</li>
+</ul>
+<h5 id="ret-指令-（无操作熟返回）"><a href="#ret-指令-（无操作熟返回）" class="headerlink" title="ret 指令 （无操作熟返回）"></a>ret 指令 （无操作熟返回）</h5><ul>
+<li>用法：<ul>
+<li>ret</li>
+</ul>
+</li>
+<li>用栈中的数据，修改IP的内容，从而实现近转移</li>
+<li>ret n的含义<ul>
+<li>pop ip</li>
+<li>add sp, n</li>
+</ul>
+</li>
+</ul>
+<h5 id="retf-指令"><a href="#retf-指令" class="headerlink" title="retf 指令"></a>retf 指令</h5><ul>
+<li>用法：<ul>
+<li>retf</li>
+</ul>
+</li>
+<li>用栈中的数据，修改IP和IP的内容，从而实现远转移</li>
 </ul>
 <h4 id="push-指令（入栈）"><a href="#push-指令（入栈）" class="headerlink" title="push 指令（入栈）"></a>push 指令（入栈）</h4><ul>
 <li>用法：<ul>
@@ -233,7 +356,7 @@
 <li>如小写变大写<ol>
 <li>小写字母比大写字母的ASCII值大32</li>
 <li>因此大写字母和小写字母的二进制只有第六位的值不一样</li>
-<li>如’A’=65=0100 0001B,’a’=97=0110 0001B<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mov bx, 0</span><br><span class="line">mov al, [bx]</span><br><span class="line">add al, 11011111b</span><br><span class="line">mov [bx], al</span><br></pre></td></tr></table></figure></li>
+<li>如’A’=65=0100 0001B,’a’=97=0110 0001B<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">;小写转大写</span><br><span class="line">mov bx, 0</span><br><span class="line">mov al, [bx]</span><br><span class="line">add al, 11011111b</span><br><span class="line">mov [bx], al</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ul>
@@ -246,7 +369,7 @@
 <li>如大写变小写<ol>
 <li>小写字母比大写字母的ASCII值大32</li>
 <li>因此大写字母和小写字母的二进制只有第六位的值不一样</li>
-<li>如’A’=65=0100 0001B,’a’=97=0110 0001B<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mov bx, 0</span><br><span class="line">mov al, [bx]</span><br><span class="line">or al, 00100000b</span><br><span class="line">mov [bx], al</span><br></pre></td></tr></table></figure></li>
+<li>如’A’=65=0100 0001B,’a’=97=0110 0001B<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">;大写转小写</span><br><span class="line">mov bx, 0</span><br><span class="line">mov al, [bx]</span><br><span class="line">or al, 00100000b</span><br><span class="line">mov [bx], al</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
 </ul>
@@ -263,7 +386,8 @@
 <li>用法：<ul>
 <li>nop</li>
 <li>滑块指令，什么也不做，直接执行下一条指令</li>
+<li>机器码占用一个字节</li>
 </ul>
 </li>
 </ul>
-</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="http://example.com">zty</a></p><p> <span>Link:  </span><a href="http://example.com/2022/09/14/9-14%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4/">http://example.com/2022/09/14/9-14%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2022/09/16/9-16%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F/" title="汇编程序"><span>< PreviousPost</span><br><span class="prevTitle">汇编程序</span></a><a class="nextSlogan" href="/2022/09/13/9-13debug/" title="debug命令的使用"><span>NextPost ></span><br><span class="nextTitle">debug命令的使用</span></a><div class="clear"></div></div><div id="comment"></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 100vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#mov-%E6%8C%87%E4%BB%A4-%E4%BC%A0%E9%80%81%E5%AD%97%E6%88%96%E5%AD%97%E8%8A%82"><span class="toc-number">1.</span> <span class="toc-text">mov 指令 (传送字或字节)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#add-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%8A%A0%E6%B3%95%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">add 指令（加法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sub-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%87%8F%E6%B3%95%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">sub 指令（减法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#div-%E6%8C%87%E4%BB%A4%EF%BC%88%E9%99%A4%E6%B3%95%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">div 指令（除法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#jmp-%E6%8C%87%E4%BB%A4%EF%BC%88%E8%BD%AC%E7%A7%BB%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">jmp 指令（转移）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#push-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%85%A5%E6%A0%88%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">push 指令（入栈）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pop-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%87%BA%E6%A0%88%EF%BC%89"><span class="toc-number">7.</span> <span class="toc-text">pop 指令（出栈）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#inc-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%8A%A0%E4%B8%80%EF%BC%89"><span class="toc-number">8.</span> <span class="toc-text">inc 指令（加一）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Loop-%E6%8C%87%E4%BB%A4-%EF%BC%88%E8%AE%A1%E6%95%B0%E5%9E%8B%E5%BE%AA%E7%8E%AF%EF%BC%89"><span class="toc-number">9.</span> <span class="toc-text">Loop 指令 （计数型循环）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#and-%E6%8C%87%E4%BB%A4%EF%BC%88%E4%B8%8E%E8%BF%90%E7%AE%97%EF%BC%89"><span class="toc-number">10.</span> <span class="toc-text">and 指令（与运算）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#or-%E6%8C%87%E4%BB%A4%EF%BC%88%E6%88%96%E8%BF%90%E7%AE%97%EF%BC%89"><span class="toc-number">11.</span> <span class="toc-text">or 指令（或运算）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#xor-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%BC%82%E6%88%96%EF%BC%89"><span class="toc-number">12.</span> <span class="toc-text">xor 指令（异或）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#nop-%E6%8C%87%E4%BB%A4%EF%BC%88%E6%BB%91%E5%9D%97%EF%BC%89"><span class="toc-number">13.</span> <span class="toc-text">nop 指令（滑块）</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="http://example.com">zty</a></p><p> <span>Link:  </span><a href="http://example.com/2022/09/14/9-14%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4/">http://example.com/2022/09/14/9-14%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2022/09/16/9-16%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F/" title="汇编程序"><span>< PreviousPost</span><br><span class="prevTitle">汇编程序</span></a><a class="nextSlogan" href="/2022/09/13/9-13debug/" title="debug命令的使用"><span>NextPost ></span><br><span class="nextTitle">debug命令的使用</span></a><div class="clear"></div></div><div id="comment"></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 100vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#mov-%E6%8C%87%E4%BB%A4-%E4%BC%A0%E9%80%81%E5%AD%97%E6%88%96%E5%AD%97%E8%8A%82"><span class="toc-number">1.</span> <span class="toc-text">mov 指令 (传送字或字节)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#add-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%8A%A0%E6%B3%95%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">add 指令（加法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sub-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%87%8F%E6%B3%95%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">sub 指令（减法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#div-%E6%8C%87%E4%BB%A4%EF%BC%88%E9%99%A4%E6%B3%95%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">div 指令（除法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mul-%E6%8C%87%E4%BB%A4%EF%BC%88%E4%B9%98%E6%B3%95%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">mul 指令（乘法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#jmp-%E6%8C%87%E4%BB%A4%EF%BC%88%E8%BD%AC%E7%A7%BB%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">jmp 指令（转移）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#jcxz-%E6%8C%87%E4%BB%A4"><span class="toc-number">7.</span> <span class="toc-text">jcxz 指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E7%94%A8"><span class="toc-number">8.</span> <span class="toc-text">调用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#call-%E6%8C%87%E4%BB%A4-%EF%BC%88%E8%B0%83%E7%94%A8%E5%AD%90%E7%A8%8B%E5%BA%8F%EF%BC%89"><span class="toc-number">8.1.</span> <span class="toc-text">call 指令 （调用子程序）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ret-%E6%8C%87%E4%BB%A4-%EF%BC%88%E6%97%A0%E6%93%8D%E4%BD%9C%E7%86%9F%E8%BF%94%E5%9B%9E%EF%BC%89"><span class="toc-number">8.2.</span> <span class="toc-text">ret 指令 （无操作熟返回）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#retf-%E6%8C%87%E4%BB%A4"><span class="toc-number">8.3.</span> <span class="toc-text">retf 指令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#push-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%85%A5%E6%A0%88%EF%BC%89"><span class="toc-number">9.</span> <span class="toc-text">push 指令（入栈）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pop-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%87%BA%E6%A0%88%EF%BC%89"><span class="toc-number">10.</span> <span class="toc-text">pop 指令（出栈）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#inc-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%8A%A0%E4%B8%80%EF%BC%89"><span class="toc-number">11.</span> <span class="toc-text">inc 指令（加一）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Loop-%E6%8C%87%E4%BB%A4-%EF%BC%88%E8%AE%A1%E6%95%B0%E5%9E%8B%E5%BE%AA%E7%8E%AF%EF%BC%89"><span class="toc-number">12.</span> <span class="toc-text">Loop 指令 （计数型循环）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#and-%E6%8C%87%E4%BB%A4%EF%BC%88%E4%B8%8E%E8%BF%90%E7%AE%97%EF%BC%89"><span class="toc-number">13.</span> <span class="toc-text">and 指令（与运算）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#or-%E6%8C%87%E4%BB%A4%EF%BC%88%E6%88%96%E8%BF%90%E7%AE%97%EF%BC%89"><span class="toc-number">14.</span> <span class="toc-text">or 指令（或运算）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#xor-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%BC%82%E6%88%96%EF%BC%89"><span class="toc-number">15.</span> <span class="toc-text">xor 指令（异或）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#nop-%E6%8C%87%E4%BB%A4%EF%BC%88%E6%BB%91%E5%9D%97%EF%BC%89"><span class="toc-number">16.</span> <span class="toc-text">nop 指令（滑块）</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

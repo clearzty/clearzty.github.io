@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="zty"><meta name="renderer" content="webkit"><meta name="copyright" content="zty"><meta name="keywords" content="SuiHuang"><meta name="description" content=""><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>模块化程序 · Mr.Zheng's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/sun.jpg"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="generator" content="Hexo 5.4.1"></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="/img/assets/sun.jpg"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">zty</div><div class="profile-signature">My WeChat：X12S05S</div><div class="friends"><div>FRIENDS</div><span><a href="//www.8bytes.top/" target="_black">hsy</a></span><span><a href="//www.ppppz.net/" target="_black">pz</a></span><span><a href="//www.ddddy.icu/" target="_black">dy</a></span><span><a href="//www.jjjjy.icu/" target="_black">wjy</a></span><span><a href="//www.coeurxx.space/" target="_black">bhl</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 100vh;background-image: url(/img/intro/1.jpg);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.Zheng's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">模块化程序</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-calendar"></i><span>2022-09-29</span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="汇编"> 汇编</a></span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h3 id="怎么返回函数中的参数"><a href="#怎么返回函数中的参数" class="headerlink" title="怎么返回函数中的参数"></a>怎么返回函数中的参数</h3><h4 id="用寄存器来存储参数和结果"><a href="#用寄存器来存储参数和结果" class="headerlink" title="用寄存器来存储参数和结果"></a>用寄存器来存储参数和结果</h4><ul>
+<li><p>```汇编<br>;求N的3次方<br>assume cs:code<br>data segment</p>
+<pre><code>dw 1,2,3,4,5,6,7,8
+dd 0,0,0,0,0,0,0,0
+</code></pre>
+<p>data ends<br>code segment<br>start:</p>
+<pre><code>mov ax, data
+mov ds, ax
+mov si, 0
+mov di, 16
+
+mov cx, 8
+</code></pre>
+<p>  s:mov bx, [si]</p>
+<pre><code>call cube
+mov [di], ax    ;乘积的低16位
+mov [di].2, dx    ;乘积的高16位 
+add si,2
+add di,4
+loop s
+</code></pre>
+<p>cube: </p>
+<pre><code>mov ax, bx
+mul bx
+mul bx
+ret
+  
+mov ax, 4c00h
+int 21h
+</code></pre>
+<p>code ends<br>end start<br>;结果在dx和ax中，n为bx中存的值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">* 参数多的时候这个方法并不适用，寄存器的个数有限</span><br><span class="line"></span><br><span class="line">#### 用内存单元批量传递参数</span><br><span class="line"></span><br><span class="line">* 将批量数据放到内存中，然后将它们所在内存空间的首地址放在寄存器中，传递给需要的子程序。</span><br><span class="line"></span><br><span class="line">* 对于具有批量数据的返回结果，也可用同样的方法，把得到结果的那块内存空间的首地址放在寄存器中。</span><br><span class="line"></span><br><span class="line">* ```汇编</span><br><span class="line">  ;data段中的字符串转化为大写</span><br><span class="line">  assume cs:code</span><br><span class="line">  data segment</span><br><span class="line">  	db &#x27;conversation&#x27;</span><br><span class="line">  data ends</span><br><span class="line">  code segment</span><br><span class="line">  start: </span><br><span class="line">  	mov ax, data</span><br><span class="line">  	mov ds, ax</span><br><span class="line">  	mov si, 0</span><br><span class="line">  	mov cx, 12	;循环12次，有12个字符</span><br><span class="line">  	call capital</span><br><span class="line">  	mov ax, 4c00h</span><br><span class="line">  	int 21h</span><br><span class="line">  capital:</span><br><span class="line">  	and byte ptr [si],11011111b</span><br><span class="line">  	inc si</span><br><span class="line">  	loop capital</span><br><span class="line">  	ret</span><br><span class="line">  code ends</span><br><span class="line">  end start</span><br></pre></td></tr></table></figure></li>
+<li><p>传递的数据量不太受限制</p>
+</li>
+</ul>
+<h4 id="用栈传递参数"><a href="#用栈传递参数" class="headerlink" title="用栈传递参数"></a>用栈传递参数</h4><ul>
+<li><p>由调用者将需要传递给子程序的参数压入栈中，子程序从栈中取得参数</p>
+</li>
+<li><p>本质上还是用内存单元传递参数</p>
+</li>
+<li><pre><code class="汇编">;计算(a-b)^3,a、b为word型数据。
+;此段程序设a=3、b=1
+code segment
+start:
+    mov ax, 1
+    push ax
+    mov ax,3
+    push ax
+    call difcube
+    mov ax, 4c00h
+    int 21h
+difcube:
+    push bp    ;借用bp，防止主程序在使用
+    mov bp, sp
+    mov ax, [bp+4]    ;将栈中a的值送入ax中
+    sub ax, [bp+6]    ;减栈中b的值
+    mov bp, ax
+    mul bp
+    mul bo
+    pop bp    ;把bp原先的值重新给bp，不影响主程序后面的运行
+    ret 4
+code ends
+</code></pre>
+</li>
+</ul>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="http://example.com">zty</a></p><p> <span>Link:  </span><a href="http://example.com/2022/09/29/9-29%E6%A8%A1%E5%9D%97%E5%8C%96%E7%A8%8B%E5%BA%8F/">http://example.com/2022/09/29/9-29%E6%A8%A1%E5%9D%97%E5%8C%96%E7%A8%8B%E5%BA%8F/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="nextSlogan" href="/2022/09/25/9-25%E8%BD%AC%E7%A7%BB/" title="转移"><span>NextPost ></span><br><span class="nextTitle">转移</span></a><div class="clear"></div></div><div id="comment"></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 100vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%8E%E4%B9%88%E8%BF%94%E5%9B%9E%E5%87%BD%E6%95%B0%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">怎么返回函数中的参数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8%E6%9D%A5%E5%AD%98%E5%82%A8%E5%8F%82%E6%95%B0%E5%92%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">1.1.</span> <span class="toc-text">用寄存器来存储参数和结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%A0%88%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0"><span class="toc-number">1.2.</span> <span class="toc-text">用栈传递参数</span></a></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
