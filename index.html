@@ -107,29 +107,7 @@
 
 
 
-</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="汇编"> 汇编</a></div><div class="read-more"><a class="more" href="/2022/09/30/9-30%E5%AF%84%E5%AD%98%E5%99%A8%E5%86%B2%E7%AA%81/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/09/29/9-29%E6%A8%A1%E5%9D%97%E5%8C%96%E7%A8%8B%E5%BA%8F/">模块化程序</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-09-28T16:00:00.000Z">2022-09-29</time></div><div class="recent-post-content">怎么返回函数中的参数用寄存器来存储参数和结果
-```汇编;求N的3次方assume cs:codedata segment
-dw 1,2,3,4,5,6,7,8
-dd 0,0,0,0,0,0,0,0
-
-data endscode segmentstart:
-mov ax, data
-mov ds, ax
-mov si, 0
-mov di, 16
-
-mov cx, 8
-
-  s:mov bx, [si]
-call cube
-mov [di], ax    ;乘积的低16位
-mov [di].2, dx    ;乘积的高16位 
-add si,2
-add di,4
-loop s
-
-cube: 
-m ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="汇编"> 汇编</a></div><div class="read-more"><a class="more" href="/2022/09/29/9-29%E6%A8%A1%E5%9D%97%E5%8C%96%E7%A8%8B%E5%BA%8F/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/09/25/9-25%E8%BD%AC%E7%A7%BB/">转移</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-09-24T16:00:00.000Z">2022-09-25</time></div><div class="recent-post-content">
+</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="汇编"> 汇编</a></div><div class="read-more"><a class="more" href="/2022/09/30/9-30%E5%AF%84%E5%AD%98%E5%99%A8%E5%86%B2%E7%AA%81/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/09/29/9-29%E6%A8%A1%E5%9D%97%E5%8C%96%E7%A8%8B%E5%BA%8F/">模块化程序</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-09-28T16:00:00.000Z">2022-09-29</time></div><div class="recent-post-content">怎么返回函数中的参数用寄存器来存储参数和结果123456789101112131415161718192021222324252627282930313233;求N的3次方assume cs:codedata segment	dw 1,2,3,4,5,6,7,8	dd 0,0,0,0,0,0,0,0data endscode segmentstart:	mov ax, data	mov ds, ax	mov si, 0	mov di, 16		mov cx, 8  s:mov bx, [si]    call cube    mov [di], ax	;乘积的低16位    mov [di]. ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="汇编"> 汇编</a></div><div class="read-more"><a class="more" href="/2022/09/29/9-29%E6%A8%A1%E5%9D%97%E5%8C%96%E7%A8%8B%E5%BA%8F/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/09/25/9-25%E8%BD%AC%E7%A7%BB/">转移</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-09-24T16:00:00.000Z">2022-09-25</time></div><div class="recent-post-content">
 
 
 
