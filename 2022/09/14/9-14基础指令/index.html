@@ -438,4 +438,104 @@
 </ul>
 </li>
 </ul>
-</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="http://example.com">zty</a></p><p> <span>Link:  </span><a href="http://example.com/2022/09/14/9-14%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4/">http://example.com/2022/09/14/9-14%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2022/09/15/9-15%E6%9D%A1%E4%BB%B6%E8%BD%AC%E7%A7%BB%E6%8C%87%E4%BB%A4/" title="条件转移指令"><span>< PreviousPost</span><br><span class="prevTitle">条件转移指令</span></a><a class="nextSlogan" href="/2022/09/13/9-13debug/" title="debug命令的使用"><span>NextPost ></span><br><span class="nextTitle">debug命令的使用</span></a><div class="clear"></div></div><div id="comment"></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 100vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#mov-%E6%8C%87%E4%BB%A4-%E4%BC%A0%E9%80%81%E5%AD%97%E6%88%96%E5%AD%97%E8%8A%82"><span class="toc-number">1.</span> <span class="toc-text">mov 指令 (传送字或字节)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#add-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%8A%A0%E6%B3%95%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">add 指令（加法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sub-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%87%8F%E6%B3%95%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">sub 指令（减法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#div-%E6%8C%87%E4%BB%A4%EF%BC%88%E9%99%A4%E6%B3%95%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">div 指令（除法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mul-%E6%8C%87%E4%BB%A4%EF%BC%88%E4%B9%98%E6%B3%95%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">mul 指令（乘法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#adc-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%B8%A6%E8%BF%9B%E4%BD%8D%E5%8A%A0%E6%B3%95%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">adc 指令（带进位加法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sbb-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%B8%A6%E5%80%9F%E4%BD%8D%E5%87%8F%E6%B3%95%EF%BC%89"><span class="toc-number">7.</span> <span class="toc-text">sbb 指令（带借位减法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#jmp-%E6%8C%87%E4%BB%A4%EF%BC%88%E8%BD%AC%E7%A7%BB%EF%BC%89"><span class="toc-number">8.</span> <span class="toc-text">jmp 指令（转移）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#jcxz-%E6%8C%87%E4%BB%A4"><span class="toc-number">9.</span> <span class="toc-text">jcxz 指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E7%94%A8"><span class="toc-number">10.</span> <span class="toc-text">调用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#call-%E6%8C%87%E4%BB%A4-%EF%BC%88%E8%B0%83%E7%94%A8%E5%AD%90%E7%A8%8B%E5%BA%8F%EF%BC%89"><span class="toc-number">10.1.</span> <span class="toc-text">call 指令 （调用子程序）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ret-%E6%8C%87%E4%BB%A4"><span class="toc-number">10.2.</span> <span class="toc-text">ret 指令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#retf-%E6%8C%87%E4%BB%A4"><span class="toc-number">10.3.</span> <span class="toc-text">retf 指令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#push-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%85%A5%E6%A0%88%EF%BC%89"><span class="toc-number">11.</span> <span class="toc-text">push 指令（入栈）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pop-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%87%BA%E6%A0%88%EF%BC%89"><span class="toc-number">12.</span> <span class="toc-text">pop 指令（出栈）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#inc-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%8A%A0%E4%B8%80%EF%BC%89"><span class="toc-number">13.</span> <span class="toc-text">inc 指令（加一）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Loop-%E6%8C%87%E4%BB%A4-%EF%BC%88%E8%AE%A1%E6%95%B0%E5%9E%8B%E5%BE%AA%E7%8E%AF%EF%BC%89"><span class="toc-number">14.</span> <span class="toc-text">Loop 指令 （计数型循环）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#and-%E6%8C%87%E4%BB%A4%EF%BC%88%E4%B8%8E%E8%BF%90%E7%AE%97%EF%BC%89"><span class="toc-number">15.</span> <span class="toc-text">and 指令（与运算）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#or-%E6%8C%87%E4%BB%A4%EF%BC%88%E6%88%96%E8%BF%90%E7%AE%97%EF%BC%89"><span class="toc-number">16.</span> <span class="toc-text">or 指令（或运算）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#xor-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%BC%82%E6%88%96%EF%BC%89"><span class="toc-number">17.</span> <span class="toc-text">xor 指令（异或）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#nop-%E6%8C%87%E4%BB%A4%EF%BC%88%E6%BB%91%E5%9D%97%EF%BC%89"><span class="toc-number">18.</span> <span class="toc-text">nop 指令（滑块）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cmp-%E6%8C%87%E4%BB%A4%EF%BC%88%E6%AF%94%E8%BE%83%EF%BC%89"><span class="toc-number">19.</span> <span class="toc-text">cmp 指令（比较）</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+<h4 id="串传送指令"><a href="#串传送指令" class="headerlink" title="串传送指令"></a>串传送指令</h4><h5 id="movsb-指令"><a href="#movsb-指令" class="headerlink" title="movsb 指令"></a>movsb 指令</h5><ul>
+<li><p>功能：以字节为单位传送</p>
+<ol>
+<li><p>((es)×16+(di))=((ds)×16+(si))</p>
+</li>
+<li><p>如果DF=0则：(si)=(si)+1</p>
+<p>​                         (di)=(di)+1</p>
+<p>如果DF=1则：(si)=(si)-1</p>
+<p>​                         (di)=(di)-1</p>
+</li>
+</ol>
+</li>
+</ul>
+<h5 id="movsw-指令"><a href="#movsw-指令" class="headerlink" title="movsw 指令"></a>movsw 指令</h5><ul>
+<li><p>功能：以字为单位传送</p>
+<ol>
+<li><p>((es)×16+(di))=((ds)×16+(si))</p>
+</li>
+<li><p>如果DF=0则：(si)=(si)+2</p>
+<p>​                         (di)=(di)-2</p>
+<p>如果DF=1则：(si)=(si)-2</p>
+<p>​                         (di)=(di)-2</p>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="rep-指令（重复）"><a href="#rep-指令（重复）" class="headerlink" title="rep 指令（重复）"></a>rep 指令（重复）</h4><ul>
+<li><p>rep通常和串传送指令搭配使用</p>
+</li>
+<li><p>功能：根据cx的值，重复执行后面的指令</p>
+</li>
+<li><p>用法：</p>
+<ul>
+<li><p>rep movsb 相当于 s：movsb</p>
+<p>​                                      loop s</p>
+</li>
+<li><p>rep movsw 相当于s：movsw</p>
+</li>
+</ul>
+<p>​                                             loop s</p>
+</li>
+</ul>
+<h4 id="移位指令"><a href="#移位指令" class="headerlink" title="移位指令"></a>移位指令</h4><ul>
+<li>OPR 操作数</li>
+<li>CNT 位移位数</li>
+<li>位移位数大于1时，必须用cl寄存器</li>
+</ul>
+<h5 id="SHL-逻辑左移"><a href="#SHL-逻辑左移" class="headerlink" title="SHL 逻辑左移"></a>SHL 逻辑左移</h5><ul>
+<li>用法： SHL OPR, CNT</li>
+</ul>
+<h5 id="SHR-逻辑右移"><a href="#SHR-逻辑右移" class="headerlink" title="SHR 逻辑右移"></a>SHR 逻辑右移</h5><ul>
+<li>用法： SHR OPR, CNT</li>
+</ul>
+<h5 id="SAL-算数左移"><a href="#SAL-算数左移" class="headerlink" title="SAL 算数左移"></a>SAL 算数左移</h5><ul>
+<li>用法： SAL OPR, CNT</li>
+</ul>
+<h5 id="SAR-算数右移"><a href="#SAR-算数右移" class="headerlink" title="SAR 算数右移"></a>SAR 算数右移</h5><ul>
+<li>用法：SAR OPR, CNT</li>
+</ul>
+<h5 id="ROL循环左移"><a href="#ROL循环左移" class="headerlink" title="ROL循环左移"></a>ROL循环左移</h5><ul>
+<li>用法：ROL OPR, CNT</li>
+</ul>
+<h5 id="RPR-循环右移"><a href="#RPR-循环右移" class="headerlink" title="RPR 循环右移"></a>RPR 循环右移</h5><ul>
+<li>用法：ROR OPR, CNT</li>
+</ul>
+<h5 id="RCL-带进位循环左移"><a href="#RCL-带进位循环左移" class="headerlink" title="RCL 带进位循环左移"></a>RCL 带进位循环左移</h5><ul>
+<li>用法：RCL OPR, CNT</li>
+</ul>
+<h5 id="RCR-带进位循环右移"><a href="#RCR-带进位循环右移" class="headerlink" title="RCR 带进位循环右移"></a>RCR 带进位循环右移</h5><ul>
+<li>用法：RCR OPR, CNT</li>
+</ul>
+<img src="/2022/09/14/9-14%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4/6.png" class="">
+
+<h4 id="int-指令（中断）"><a href="#int-指令（中断）" class="headerlink" title="int 指令（中断）"></a>int 指令（中断）</h4><ul>
+<li>用法：int n，n为中断类型码</li>
+<li>功能：引发中断过程</li>
+<li>执行int n时（自动执行）<ul>
+<li>pushf</li>
+<li>push CS</li>
+<li>push IP</li>
+</ul>
+</li>
+</ul>
+<h4 id="iret-指令"><a href="#iret-指令" class="headerlink" title="iret 指令"></a>iret 指令</h4><ul>
+<li>配合int指令使用</li>
+<li>执行iret时<ul>
+<li>pop IP</li>
+<li>pop CS</li>
+<li>popf</li>
+</ul>
+</li>
+</ul>
+<h4 id="cld-指令"><a href="#cld-指令" class="headerlink" title="cld 指令"></a>cld 指令</h4><ul>
+<li>将DF设为0（clear）</li>
+<li>设置传输方向为正</li>
+</ul>
+<h4 id="std-指令"><a href="#std-指令" class="headerlink" title="std 指令"></a>std 指令</h4><ul>
+<li>s将DF设为1（setup）</li>
+<li>设置传输方向为反</li>
+</ul>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="http://example.com">zty</a></p><p> <span>Link:  </span><a href="http://example.com/2022/09/14/9-14%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4/">http://example.com/2022/09/14/9-14%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2022/09/15/9-15%E6%9D%A1%E4%BB%B6%E8%BD%AC%E7%A7%BB%E6%8C%87%E4%BB%A4/" title="条件转移指令"><span>< PreviousPost</span><br><span class="prevTitle">条件转移指令</span></a><a class="nextSlogan" href="/2022/09/13/9-13debug/" title="debug命令的使用"><span>NextPost ></span><br><span class="nextTitle">debug命令的使用</span></a><div class="clear"></div></div><div id="comment"></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 100vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#mov-%E6%8C%87%E4%BB%A4-%E4%BC%A0%E9%80%81%E5%AD%97%E6%88%96%E5%AD%97%E8%8A%82"><span class="toc-number">1.</span> <span class="toc-text">mov 指令 (传送字或字节)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#add-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%8A%A0%E6%B3%95%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">add 指令（加法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sub-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%87%8F%E6%B3%95%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">sub 指令（减法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#div-%E6%8C%87%E4%BB%A4%EF%BC%88%E9%99%A4%E6%B3%95%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">div 指令（除法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mul-%E6%8C%87%E4%BB%A4%EF%BC%88%E4%B9%98%E6%B3%95%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">mul 指令（乘法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#adc-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%B8%A6%E8%BF%9B%E4%BD%8D%E5%8A%A0%E6%B3%95%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">adc 指令（带进位加法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sbb-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%B8%A6%E5%80%9F%E4%BD%8D%E5%87%8F%E6%B3%95%EF%BC%89"><span class="toc-number">7.</span> <span class="toc-text">sbb 指令（带借位减法）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#jmp-%E6%8C%87%E4%BB%A4%EF%BC%88%E8%BD%AC%E7%A7%BB%EF%BC%89"><span class="toc-number">8.</span> <span class="toc-text">jmp 指令（转移）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#jcxz-%E6%8C%87%E4%BB%A4"><span class="toc-number">9.</span> <span class="toc-text">jcxz 指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E7%94%A8"><span class="toc-number">10.</span> <span class="toc-text">调用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#call-%E6%8C%87%E4%BB%A4-%EF%BC%88%E8%B0%83%E7%94%A8%E5%AD%90%E7%A8%8B%E5%BA%8F%EF%BC%89"><span class="toc-number">10.1.</span> <span class="toc-text">call 指令 （调用子程序）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ret-%E6%8C%87%E4%BB%A4"><span class="toc-number">10.2.</span> <span class="toc-text">ret 指令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#retf-%E6%8C%87%E4%BB%A4"><span class="toc-number">10.3.</span> <span class="toc-text">retf 指令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#push-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%85%A5%E6%A0%88%EF%BC%89"><span class="toc-number">11.</span> <span class="toc-text">push 指令（入栈）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pop-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%87%BA%E6%A0%88%EF%BC%89"><span class="toc-number">12.</span> <span class="toc-text">pop 指令（出栈）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#inc-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%8A%A0%E4%B8%80%EF%BC%89"><span class="toc-number">13.</span> <span class="toc-text">inc 指令（加一）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Loop-%E6%8C%87%E4%BB%A4-%EF%BC%88%E8%AE%A1%E6%95%B0%E5%9E%8B%E5%BE%AA%E7%8E%AF%EF%BC%89"><span class="toc-number">14.</span> <span class="toc-text">Loop 指令 （计数型循环）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#and-%E6%8C%87%E4%BB%A4%EF%BC%88%E4%B8%8E%E8%BF%90%E7%AE%97%EF%BC%89"><span class="toc-number">15.</span> <span class="toc-text">and 指令（与运算）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#or-%E6%8C%87%E4%BB%A4%EF%BC%88%E6%88%96%E8%BF%90%E7%AE%97%EF%BC%89"><span class="toc-number">16.</span> <span class="toc-text">or 指令（或运算）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#xor-%E6%8C%87%E4%BB%A4%EF%BC%88%E5%BC%82%E6%88%96%EF%BC%89"><span class="toc-number">17.</span> <span class="toc-text">xor 指令（异或）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#nop-%E6%8C%87%E4%BB%A4%EF%BC%88%E6%BB%91%E5%9D%97%EF%BC%89"><span class="toc-number">18.</span> <span class="toc-text">nop 指令（滑块）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cmp-%E6%8C%87%E4%BB%A4%EF%BC%88%E6%AF%94%E8%BE%83%EF%BC%89"><span class="toc-number">19.</span> <span class="toc-text">cmp 指令（比较）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%B2%E4%BC%A0%E9%80%81%E6%8C%87%E4%BB%A4"><span class="toc-number">20.</span> <span class="toc-text">串传送指令</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#movsb-%E6%8C%87%E4%BB%A4"><span class="toc-number">20.1.</span> <span class="toc-text">movsb 指令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#movsw-%E6%8C%87%E4%BB%A4"><span class="toc-number">20.2.</span> <span class="toc-text">movsw 指令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rep-%E6%8C%87%E4%BB%A4%EF%BC%88%E9%87%8D%E5%A4%8D%EF%BC%89"><span class="toc-number">21.</span> <span class="toc-text">rep 指令（重复）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A7%BB%E4%BD%8D%E6%8C%87%E4%BB%A4"><span class="toc-number">22.</span> <span class="toc-text">移位指令</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#SHL-%E9%80%BB%E8%BE%91%E5%B7%A6%E7%A7%BB"><span class="toc-number">22.1.</span> <span class="toc-text">SHL 逻辑左移</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#SHR-%E9%80%BB%E8%BE%91%E5%8F%B3%E7%A7%BB"><span class="toc-number">22.2.</span> <span class="toc-text">SHR 逻辑右移</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#SAL-%E7%AE%97%E6%95%B0%E5%B7%A6%E7%A7%BB"><span class="toc-number">22.3.</span> <span class="toc-text">SAL 算数左移</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#SAR-%E7%AE%97%E6%95%B0%E5%8F%B3%E7%A7%BB"><span class="toc-number">22.4.</span> <span class="toc-text">SAR 算数右移</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ROL%E5%BE%AA%E7%8E%AF%E5%B7%A6%E7%A7%BB"><span class="toc-number">22.5.</span> <span class="toc-text">ROL循环左移</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#RPR-%E5%BE%AA%E7%8E%AF%E5%8F%B3%E7%A7%BB"><span class="toc-number">22.6.</span> <span class="toc-text">RPR 循环右移</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#RCL-%E5%B8%A6%E8%BF%9B%E4%BD%8D%E5%BE%AA%E7%8E%AF%E5%B7%A6%E7%A7%BB"><span class="toc-number">22.7.</span> <span class="toc-text">RCL 带进位循环左移</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#RCR-%E5%B8%A6%E8%BF%9B%E4%BD%8D%E5%BE%AA%E7%8E%AF%E5%8F%B3%E7%A7%BB"><span class="toc-number">22.8.</span> <span class="toc-text">RCR 带进位循环右移</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#int-%E6%8C%87%E4%BB%A4%EF%BC%88%E4%B8%AD%E6%96%AD%EF%BC%89"><span class="toc-number">23.</span> <span class="toc-text">int 指令（中断）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#iret-%E6%8C%87%E4%BB%A4"><span class="toc-number">24.</span> <span class="toc-text">iret 指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cld-%E6%8C%87%E4%BB%A4"><span class="toc-number">25.</span> <span class="toc-text">cld 指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#std-%E6%8C%87%E4%BB%A4"><span class="toc-number">26.</span> <span class="toc-text">std 指令</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>

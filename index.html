@@ -107,7 +107,36 @@
 
 
 
-</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="汇编"> 汇编</a></div><div class="read-more"><a class="more" href="/2022/09/30/9-30%E5%AF%84%E5%AD%98%E5%99%A8%E5%86%B2%E7%AA%81/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/09/29/9-29%E6%A8%A1%E5%9D%97%E5%8C%96%E7%A8%8B%E5%BA%8F/">模块化程序</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-09-28T16:00:00.000Z">2022-09-29</time></div><div class="recent-post-content">怎么返回函数中的参数用寄存器来存储参数和结果123456789101112131415161718192021222324252627282930313233;求N的3次方assume cs:codedata segment	dw 1,2,3,4,5,6,7,8	dd 0,0,0,0,0,0,0,0data endscode segmentstart:	mov ax, data	mov ds, ax	mov si, 0	mov di, 16		mov cx, 8  s:mov bx, [si]    call cube    mov [di], ax	;乘积的低16位    mov [di]. ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="汇编"> 汇编</a></div><div class="read-more"><a class="more" href="/2022/09/29/9-29%E6%A8%A1%E5%9D%97%E5%8C%96%E7%A8%8B%E5%BA%8F/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/09/25/9-25%E8%BD%AC%E7%A7%BB/">转移</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-09-24T16:00:00.000Z">2022-09-25</time></div><div class="recent-post-content">
+</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="汇编"> 汇编</a></div><div class="read-more"><a class="more" href="/2022/09/30/9-30%E5%AF%84%E5%AD%98%E5%99%A8%E5%86%B2%E7%AA%81/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/09/29/9-29%E6%A8%A1%E5%9D%97%E5%8C%96%E7%A8%8B%E5%BA%8F/">模块化程序</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-09-28T16:00:00.000Z">2022-09-29</time></div><div class="recent-post-content">怎么返回函数中的参数用寄存器来存储参数和结果123456789101112131415161718192021222324252627282930313233;求N的3次方assume cs:codedata segment	dw 1,2,3,4,5,6,7,8	dd 0,0,0,0,0,0,0,0data endscode segmentstart:	mov ax, data	mov ds, ax	mov si, 0	mov di, 16		mov cx, 8  s:mov bx, [si]    call cube    mov [di], ax	;乘积的低16位    mov [di]. ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="汇编"> 汇编</a></div><div class="read-more"><a class="more" href="/2022/09/29/9-29%E6%A8%A1%E5%9D%97%E5%8C%96%E7%A8%8B%E5%BA%8F/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/09/28/9-28%E4%B8%AD%E6%96%AD/">中断操作</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-09-27T16:00:00.000Z">2022-09-28</time></div><div class="recent-post-content">中断的概念
+中断：CPU不再接着（刚执行完的指令）向下执行，而是转去处理中断信息。
+内中断：由CPU内部发生的事件而引起的中断
+外中断：由外部设备发生的事件引起的中断
+
+
+
+内中断
+CPU内部产生的中断信息
+除法错误，比如：执行div指令产生的除法溢出
+单步执行
+执行into（溢出）指令
+执行int（中断）指令
+
+
+8086的中断类型码
+除法错误：0
+单步执行：1
+执行into指令：4
+执行int n 指令，立即数n为终端类型码
+
+
+
+中断处理程序
+
+
+
+单步中断
+CPU在执行完一条指令之后，如果监测到标志寄存器的TF位为1，则产生单步中断（中断类型码为1），引发中断过程，执行中断处理程序。
+ ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="汇编"> 汇编</a></div><div class="read-more"><a class="more" href="/2022/09/28/9-28%E4%B8%AD%E6%96%AD/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/09/25/9-25%E8%BD%AC%E7%A7%BB/">转移</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-09-24T16:00:00.000Z">2022-09-25</time></div><div class="recent-post-content">
 
 
 
@@ -193,65 +222,4 @@ DT（Define Tenbytes）
 dup伪代码(duplicate 复制)
 dup和db、dw、dd等数据定义伪指令配合使用，用来进行数据的重复
 使用格式：
-类型 重复次数 dup (需要 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="汇编"> 汇编</a></div><div class="read-more"><a class="more" href="/2022/09/09/9-9%E6%95%B0%E6%8D%AE%E5%AE%9A%E4%B9%89/#more">ReadMore</a></div><hr></div><div class="recent-post-item"><div class="post-title"><a href="/2022/09/08/9-8%E6%A0%87%E5%BF%97%E5%AF%84%E5%AD%98%E5%99%A8/">标志寄存器</a></div><div class="post-time"><i class="fa fa-table"></i><time datetime="2022-09-07T16:00:00.000Z">2022-09-08</time></div><div class="recent-post-content">标志寄存器的结构
-标志寄存器是按位起作用的
-标志寄存器在8086cpu虽然是一个16位的寄存器，但是在第1、3、5、12、13、14、15这些位不具有任何含义。
-
-标志寄存器的作用
-用来存储相关指令的某些执行结果
-用来为CPU执行相关指令提供行为依据
-用来控制CPU的相关工作方式
-
-标志寄存器各位的含义
-
-
-15
-14
-13
-12
-11
-10
-9
-8
-7
-6
-5
-4
-3
-2
-1
-0
-
-
-
-nul
-nul
-nul
-nul
-OF
-DF
-IF
-TF
-SF
-ZF
-nul
-AF
-nul
-PF
-nul
-CF
-
-
-标志寄存器各位的状态
-
-
-标志
-值为1
-值为0
-意义
-
-
-
-OF（Overflow）
-OV
-N ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="汇编"> 汇编</a></div><div class="read-more"><a class="more" href="/2022/09/08/9-8%E6%A0%87%E5%BF%97%E5%AF%84%E5%AD%98%E5%99%A8/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">NEXT &amp;#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+类型 重复次数 dup (需要 ...</div><div class="recent-post-tags"><a class="post-tag fa fa-tag" href="javascript:void(0)" date-tags="汇编"> 汇编</a></div><div class="read-more"><a class="more" href="/2022/09/09/9-9%E6%95%B0%E6%8D%AE%E5%AE%9A%E4%B9%89/#more">ReadMore</a></div><hr></div></section><nav class="cxo-page-nav"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">NEXT &amp;#62;</a></nav></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
