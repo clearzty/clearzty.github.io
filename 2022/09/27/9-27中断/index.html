@@ -97,12 +97,12 @@
   }
 }( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="generator" content="Hexo 5.4.1"></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="/img/assets/sun.jpg"></div><!--.profile-saying
   i.fa.fa-comment
-  .saying--><div class="cxo-profile-inner"><div class="profile-name">zty</div><div class="profile-signature">My WeChat：X12S05S</div><div class="friends"><div>FRIENDS</div><span><a href="//www.8bytes.top/" target="_black">hsy</a></span><span><a href="//www.ppppz.net/" target="_black">pz</a></span><span><a href="//www.ddddy.icu/" target="_black">dy</a></span><span><a href="//www.jjjjy.icu/" target="_black">wjy</a></span><span><a href="//www.coeurxx.space/" target="_black">bhl</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 100vh;background-image: url(/img/intro/1.jpg);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.Zheng's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">中断操作</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-calendar"></i><span>2022-09-28</span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="汇编"> 汇编</a></span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h3 id="中断的概念"><a href="#中断的概念" class="headerlink" title="中断的概念"></a>中断的概念</h3><ul>
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">zty</div><div class="profile-signature">My WeChat：X12S05S</div><div class="friends"><div>FRIENDS</div><span><a href="//www.8bytes.top/" target="_black">hsy</a></span><span><a href="//www.ppppz.net/" target="_black">pz</a></span><span><a href="//www.ddddy.icu/" target="_black">dy</a></span><span><a href="//www.jjjjy.icu/" target="_black">wjy</a></span><span><a href="//www.coeurxx.space/" target="_black">bhl</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 100vh;background-image: url(/img/intro/1.jpg);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.Zheng's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title">中断操作</h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-calendar"></i><span>2022-09-27</span></span><span class="post-intro-tags"><a class="intro-tag fa fa-tag" href="javascript:void(0)" date-tags="汇编"> 汇编</a></span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><h3 id="中断的概念"><a href="#中断的概念" class="headerlink" title="中断的概念"></a>中断的概念</h3><ul>
 <li>中断：CPU不再接着（刚执行完的指令）向下执行，而是转去处理中断信息。</li>
 <li>内中断：由CPU内部发生的事件而引起的中断</li>
 <li>外中断：由外部设备发生的事件引起的中断</li>
 </ul>
-<img src="/2022/09/28/9-28%E4%B8%AD%E6%96%AD/1.png" class="">
+<img src="/2022/09/27/9-27%E4%B8%AD%E6%96%AD/1.png" class="">
 
 <h5 id="内中断"><a href="#内中断" class="headerlink" title="内中断"></a>内中断</h5><ul>
 <li>CPU内部产生的中断信息<ul>
@@ -115,14 +115,15 @@
 <li>8086的中断类型码<ul>
 <li>除法错误：0</li>
 <li>单步执行：1</li>
+<li>不可屏蔽中断：2</li>
 <li>执行into指令：4</li>
 <li>执行int n 指令，立即数n为终端类型码</li>
 </ul>
 </li>
 </ul>
-<h3 id="中断处理程序"><a href="#中断处理程序" class="headerlink" title="中断处理程序"></a>中断处理程序</h3><img src="/2022/09/28/9-28%E4%B8%AD%E6%96%AD/2.png" class="">
+<h3 id="中断处理程序"><a href="#中断处理程序" class="headerlink" title="中断处理程序"></a>中断处理程序</h3><img src="/2022/09/27/9-27%E4%B8%AD%E6%96%AD/2.png" class="">
 
-<img src="/2022/09/28/9-28%E4%B8%AD%E6%96%AD/3.png" class="">
+<img src="/2022/09/27/9-27%E4%B8%AD%E6%96%AD/3.png" class="">
 
 <h3 id="单步中断"><a href="#单步中断" class="headerlink" title="单步中断"></a>单步中断</h3><ul>
 <li><p>CPU在执行完一条指令之后，如果监测到标志寄存器的TF位为1，则产生单步中断（中断类型码为1），引发中断过程，执行中断处理程序。</p>
@@ -132,7 +133,7 @@
 <li>取得终端类型码1</li>
 <li>标志寄存器入栈，TF、IF设置为0</li>
 </ol>
-<img src="/2022/09/28/9-28%E4%B8%AD%E6%96%AD/4.png" class="">
+<img src="/2022/09/27/9-27%E4%B8%AD%E6%96%AD/4.png" class="">
 
 <ol start="3">
 <li><p>CS、IP入栈</p>
@@ -166,4 +167,17 @@
 <li>int指令的最终功能和call指令相似，都是调用一段程序</li>
 <li>一般情况下，系统将一些具有一定功能的子程序，以中断处理程序的方式提供给应用程序调用</li>
 </ul>
-</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="http://example.com">zty</a></p><p> <span>Link:  </span><a href="http://example.com/2022/09/28/9-28%E4%B8%AD%E6%96%AD/">http://example.com/2022/09/28/9-28%E4%B8%AD%E6%96%AD/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2022/09/29/9-29%E6%A8%A1%E5%9D%97%E5%8C%96%E7%A8%8B%E5%BA%8F/" title="模块化程序"><span>< PreviousPost</span><br><span class="prevTitle">模块化程序</span></a><a class="nextSlogan" href="/2022/09/25/9-25%E8%BD%AC%E7%A7%BB/" title="转移"><span>NextPost ></span><br><span class="nextTitle">转移</span></a><div class="clear"></div></div><div id="comment"></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 100vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">中断的概念</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%86%85%E4%B8%AD%E6%96%AD"><span class="toc-number">1.0.1.</span> <span class="toc-text">内中断</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F"><span class="toc-number">2.</span> <span class="toc-text">中断处理程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E6%AD%A5%E4%B8%AD%E6%96%AD"><span class="toc-number">3.</span> <span class="toc-text">单步中断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B1int%E6%8C%87%E4%BB%A4%E5%BC%95%E5%8F%91%E7%9A%84%E4%B8%AD%E6%96%AD"><span class="toc-number">4.</span> <span class="toc-text">由int指令引发的中断</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
+<h3 id="bios中断和dos中断手册"><a href="#bios中断和dos中断手册" class="headerlink" title="bios中断和dos中断手册"></a>bios中断和dos中断手册</h3><p><a target="_blank" rel="noopener" href="https://www.html.cn/intsec/other/230624.html">https://www.html.cn/intsec/other/230624.html</a></p>
+<img src="/2022/09/27/9-27%E4%B8%AD%E6%96%AD/5.png" class="">
+
+<h3 id="键盘中断"><a href="#键盘中断" class="headerlink" title="键盘中断"></a>键盘中断</h3><img src="/2022/09/27/9-27%E4%B8%AD%E6%96%AD/6.png" class="">
+
+<img src="/2022/09/27/9-27%E4%B8%AD%E6%96%AD/7.png" class="">
+
+<img src="/2022/09/27/9-27%E4%B8%AD%E6%96%AD/8.png" class="">
+
+<img src="/2022/09/27/9-27%E4%B8%AD%E6%96%AD/9.png" class="">
+
+
+
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="http://example.com">zty</a></p><p> <span>Link:  </span><a href="http://example.com/2022/09/27/9-27%E4%B8%AD%E6%96%AD/">http://example.com/2022/09/27/9-27%E4%B8%AD%E6%96%AD/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2022/09/28/9-28%E7%AB%AF%E5%8F%A3/" title="端口"><span>< PreviousPost</span><br><span class="prevTitle">端口</span></a><a class="nextSlogan" href="/2022/09/25/9-25%E8%BD%AC%E7%A7%BB/" title="转移"><span>NextPost ></span><br><span class="nextTitle">转移</span></a><div class="clear"></div></div><div id="comment"></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 100vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">中断的概念</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%86%85%E4%B8%AD%E6%96%AD"><span class="toc-number">1.0.1.</span> <span class="toc-text">内中断</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F"><span class="toc-number">2.</span> <span class="toc-text">中断处理程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E6%AD%A5%E4%B8%AD%E6%96%AD"><span class="toc-number">3.</span> <span class="toc-text">单步中断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B1int%E6%8C%87%E4%BB%A4%E5%BC%95%E5%8F%91%E7%9A%84%E4%B8%AD%E6%96%AD"><span class="toc-number">4.</span> <span class="toc-text">由int指令引发的中断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bios%E4%B8%AD%E6%96%AD%E5%92%8Cdos%E4%B8%AD%E6%96%AD%E6%89%8B%E5%86%8C"><span class="toc-number">5.</span> <span class="toc-text">bios中断和dos中断手册</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%AE%E7%9B%98%E4%B8%AD%E6%96%AD"><span class="toc-number">6.</span> <span class="toc-text">键盘中断</span></a></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
